@@ -23,8 +23,6 @@ END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[updateInputDevices();
 
-logDevicesState();
-
 OnTick();
 
 updateOutputDevices();
@@ -96,9 +94,9 @@ END_FOR]]></ST>
       </Implementation>
     </Method>
     <Method Name="OnTick" Id="{c3d4dc74-548b-46fb-9af8-1188cc74d0a6}" FolderPath="Members to override\">
-      <Declaration><![CDATA[METHOD PROTECTED ABSTRACT OnTick]]></Declaration>
+      <Declaration><![CDATA[METHOD PROTECTED OnTick]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[logDevicesState();]]></ST>
       </Implementation>
     </Method>
     <Method Name="saveDevicesState" Id="{c2735e41-08c5-48a6-bc0c-ffc69f2f81c2}" FolderPath="Private members\">
