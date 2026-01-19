@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="DEVICE_STATE" Id="{ba4db6af-5641-4ebb-a9d1-4e37766e2589}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+{attribute 'to_string'}
+TYPE DEVICE_STATE :
+(
+	FAULT := 0,
+	WORKING
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

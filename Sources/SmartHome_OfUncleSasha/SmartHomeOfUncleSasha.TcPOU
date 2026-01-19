@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="SmartHomeOfUncleSasha" Id="{d2ead0ab-b311-4e85-8b7f-1f8baf762f5a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SmartHomeOfUncleSasha EXTENDS SmartHome<5>
+VAR
+	CarbonDioxideSensor_Room_1 : SHDevLib.CarbonDioxideSensor('Room 1');
+	Ventilation_Room_1 : SHDevLib.Ventilation('Room 1');
+
+	CarbonDioxideSensor_Kitchen : SHDevLib.CarbonDioxideSensor('Kitchen');
+	Ventilation_Kitchen : SHDevLib.Ventilation('Kitchen');
+	
+	ClimatSystem_Room_1 : SHDevLib.ClimatSystem('Room 1');
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="GetDeviceArray" Id="{0b14359f-a51e-477e-a91c-7e6ebadbb84d}">
+      <Declaration><![CDATA[METHOD PROTECTED GetDeviceArray : ARRAY [0.._DeviceCount - 1] OF IDevice
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[GetDeviceArray[0] := CarbonDioxideSensor_Room_1;
+GetDeviceArray[1] := Ventilation_Room_1;
+
+GetDeviceArray[2] := CarbonDioxideSensor_Kitchen;
+GetDeviceArray[3] := Ventilation_Kitchen;
+	
+GetDeviceArray[4] := ClimatSystem_Room_1;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OnTick" Id="{2f6ca174-6209-4312-bfdd-2636dda33753}">
+      <Declaration><![CDATA[METHOD PROTECTED OnTick]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF CarbonDioxideSensor_Room_1.CarbonDioxideLevel > 1100 THEN
+	Ventilation_Room_1.SetSpeed(3);
+ELSIF CarbonDioxideSensor_Room_1.CarbonDioxideLevel > 900 THEN
+	Ventilation_Room_1.SetSpeed(2);
+ELSIF CarbonDioxideSensor_Room_1.CarbonDioxideLevel > 700 THEN
+	Ventilation_Room_1.SetSpeed(1);
+ELSE
+	Ventilation_Room_1.SetSpeed(0);
+END_IF
+
+IF CarbonDioxideSensor_Kitchen.CarbonDioxideLevel > 1200 THEN
+	Ventilation_Kitchen.SetSpeed(3);
+ELSIF CarbonDioxideSensor_Kitchen.CarbonDioxideLevel > 1000 THEN
+	Ventilation_Kitchen.SetSpeed(2);
+ELSIF CarbonDioxideSensor_Kitchen.CarbonDioxideLevel > 800 THEN
+	Ventilation_Kitchen.SetSpeed(1);
+ELSE
+	Ventilation_Kitchen.SetSpeed(0);
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

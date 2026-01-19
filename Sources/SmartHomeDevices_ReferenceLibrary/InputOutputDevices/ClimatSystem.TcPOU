@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="ClimatSystem" Id="{d5c9f4d7-442e-4350-b38e-72270214942d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ClimatSystem EXTENDS Device IMPLEMENTS SHLib.IInputDevice, SHLib.IOutputDevice
+VAR
+	_Temperature : SINT := 25;
+	
+	_IsCoolingOn : BOOL;
+	_IsHeatingOn : BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="IsCoolingOn" Id="{5b45d383-5f49-4517-a50f-625530fae5ce}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY IsCoolingOn : BOOL]]></Declaration>
+      <Get Name="Get" Id="{5f83f3cc-2dc6-44d0-a203-f1c8b48a1525}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsCoolingOn := _IsCoolingOn;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="IsHeatingOn" Id="{828ee96e-21b4-4e34-806a-543797de5bbf}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY IsHeatingOn : BOOL]]></Declaration>
+      <Get Name="Get" Id="{ce639004-d103-47c0-9902-eb26fcb07b0d}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsHeatingOn := _IsHeatingOn;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Name" Id="{6b9ccc29-dfff-4927-81ce-27cbd43db212}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Name : STRING]]></Declaration>
+      <Get Name="Get" Id="{9f9b7976-f60d-43b4-a92f-220a5c8e3fc5}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Name := 'ClimatSystem';]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="ReadInputs" Id="{befd84e7-279d-42f9-bcb3-cd989af07b0f}">
+      <Declaration><![CDATA[METHOD ReadInputs]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// handle value from terminal here]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Temperature" Id="{10cfe9f1-989b-4b93-93ac-40dff08806b8}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Temperature : SINT]]></Declaration>
+      <Get Name="Get" Id="{3cffbb6f-ab2f-4faa-a477-6d68b2e7bd67}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Temperature := _Temperature;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="WriteOutputs" Id="{e7fe7906-23f2-4f3e-9cca-ab9f37a2f9b9}">
+      <Declaration><![CDATA[METHOD WriteOutputs]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_IsHeatingOn := _Temperature <= 20;
+_IsCoolingOn := _Temperature >= 30;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

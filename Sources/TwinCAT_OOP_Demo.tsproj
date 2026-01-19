@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.19">
+	<Project ProjectGUID="{269ABC7E-E967-4A78-BCB5-F1294838C8F3}" Target64Bit="true" ShowHideConfigurations="#x3c7">
+		<System>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+				<Task Id="4" Priority="21" CycleTime="100000" AmsPort="351" AdtTasks="true">
+					<Name>PlcTask1</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{37AC6192-DAEF-48DD-8653-493209127BFA}" Name="SmartHome_ReferenceLibrary" PrjFilePath="SmartHome_ReferenceLibrary\SmartHome_ReferenceLibrary.plcproj" TmcFilePath="SmartHome_ReferenceLibrary\SmartHome_ReferenceLibrary.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{1FD70D8D-D0DD-1538-339D-3F2EBCB801E7}" TmcPath="SmartHome_ReferenceLibrary\SmartHome_ReferenceLibrary.tmc">
+					<Name>SmartHome_ReferenceLibrary Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+				</Instance>
+			</Project>
+			<Project GUID="{4A7A0E28-8763-4638-AFCB-015184303941}" Name="SmartHomeDevices_ReferenceLibrary" PrjFilePath="SmartHomeDevices_ReferenceLibrary\SmartHomeDevices_ReferenceLibrary.plcproj" TmcFilePath="SmartHomeDevices_ReferenceLibrary\SmartHomeDevices_ReferenceLibrary.tmc" ReloadTmc="true" AmsPort="853" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502080" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{47F22C14-415A-67BB-7312-C3ED9F41CC8E}" TmcPath="SmartHomeDevices_ReferenceLibrary\SmartHomeDevices_ReferenceLibrary.tmc">
+					<Name>SmartHomeDevices_ReferenceLibrary Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+				</Instance>
+			</Project>
+			<Project GUID="{558F3FBA-E45B-4A34-BF9F-8C78F82C2901}" Name="SmartHome_OfUncleSasha" PrjFilePath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.plcproj" TmcFilePath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{95C66220-3958-2C6C-7DB4-54B2262BF2E5}" TmcPath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.tmc">
+					<Name>SmartHome_OfUncleSasha Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Contexts>
+						<Context>
+							<Id>0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502041"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Analytics ConfigVersion="1.4">
+			<Name>ANALYTICS</Name>
+			<ImageId>437</ImageId>
+			<XmlProps><![CDATA[<Address>Hauptstraße 5, 32567 Berlin</Address><Latitude>123.41</Latitude><Longitude>43.4555</Longitude><SystemIdAlias /><DeviceProps></DeviceProps><SelectedDriverVersion>3.3.211.0</SelectedDriverVersion><StreamTargets><StreamTargetItem Id="0b0f754c-af7a-4924-8ebd-1b7f0e010b0e"><Name>Stream Target 1</Name><Type>FILE</Type><Directory>%TC_BOOTPRJPATH%</Directory><MqttConnectionSettings><Broker>127.0.0.1</Broker><BrokerPort>1883</BrokerPort><UserID /><WithCertificates>false</WithCertificates><CA_Certificate /><Cert_Certificate /><Key_Certificate /><CommunicationTimeout>30000000</CommunicationTimeout><KeepAlivePeriod>600000000</KeepAlivePeriod><TcpBufferSize>32768</TcpBufferSize><SecurityType>NO_SECURITY</SecurityType><Insecure>false</Insecure><IgnoreExpiration>false</IgnoreExpiration><IsPskIdCaseSensitive>false</IsPskIdCaseSensitive><IgnoreCnMismatch>false</IgnoreCnMismatch><TargetPaths>false</TargetPaths><PskMode>HexKey</PskMode></MqttConnectionSettings><TimeType>None</TimeType></StreamTargetItem></StreamTargets><ActivateAlyLogger>false</ActivateAlyLogger>]]></XmlProps>
+		</Analytics>
+	</Project>
+</TcSmProject>

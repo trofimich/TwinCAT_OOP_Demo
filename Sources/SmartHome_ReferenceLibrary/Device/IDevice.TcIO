@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="IDevice" Id="{4d045fef-5146-4c94-9852-3ba017e3ffe1}">
+    <Declaration><![CDATA[INTERFACE IDevice EXTENDS __SYSTEM.IQueryInterface]]></Declaration>
+    <Property Name="Name" Id="{31400d96-078b-4f0d-b6a6-fc0524f50ff6}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Name : STRING]]></Declaration>
+      <Get Name="Get" Id="{11eedeee-9cda-4596-97bd-67a533dc23f1}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="Place" Id="{154b2e2c-0f58-42ed-bcfb-8e25e51d19bd}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Place : STRING]]></Declaration>
+      <Get Name="Get" Id="{714efe03-7e09-4761-8769-fc148e69f820}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="State" Id="{b8c9dd2e-cf60-4d3e-8096-739b51c37676}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY State : DEVICE_STATE]]></Declaration>
+      <Get Name="Get" Id="{899b2905-58cf-4d3d-bdba-40dfc1a37f60}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

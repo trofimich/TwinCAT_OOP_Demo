@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="IInputDevice" Id="{ee96199e-8788-4fb6-b050-ed776ced9cc6}">
+    <Declaration><![CDATA[INTERFACE IInputDevice EXTENDS IDevice]]></Declaration>
+    <Method Name="ReadInputs" Id="{9943c009-39d2-4860-b10a-f331d4106b45}">
+      <Declaration><![CDATA[METHOD ReadInputs]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

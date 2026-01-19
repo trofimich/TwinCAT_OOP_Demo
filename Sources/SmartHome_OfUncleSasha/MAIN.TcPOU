@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{23cba3fb-552e-4b11-b57f-a311785ea557}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	SmartHome : SmartHomeOfUncleSasha;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SmartHome.Execute();]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

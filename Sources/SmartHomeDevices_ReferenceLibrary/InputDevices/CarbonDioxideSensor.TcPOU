@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="CarbonDioxideSensor" Id="{e1272fbc-4237-4208-a038-78ed9d5f74fb}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK CarbonDioxideSensor EXTENDS Device IMPLEMENTS SHLib.IInputDevice
+VAR
+	_CarbonDioxideLevel : WORD := 800;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="CarbonDioxideLevel" Id="{0c6e80c7-98d8-4516-933b-6944d6c6aab0}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY CarbonDioxideLevel : WORD
+]]></Declaration>
+      <Get Name="Get" Id="{f76bd113-b113-4150-89e5-ce4c15d93ba9}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[CarbonDioxideLevel := _CarbonDioxideLevel;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Name" Id="{7626f8d8-020e-4fa5-98fd-9a9237729a65}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Name : STRING]]></Declaration>
+      <Get Name="Get" Id="{628b7714-3354-4018-9b95-9ddd8ae3d138}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Name := 'OxygenSensor';]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="ReadInputs" Id="{aa64c8a8-f985-46ea-83c3-4a2fce2ee799}">
+      <Declaration><![CDATA[METHOD ReadInputs
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// handle value from terminal here]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

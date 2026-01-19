@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="Ventilation" Id="{519c61d9-5da5-47c5-aef5-3169a8420acb}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Ventilation EXTENDS Device IMPLEMENTS SHLib.IOutputDevice
+VAR
+	_Speed : BYTE;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="IsOn" Id="{b650a8dd-aa93-4f9b-8d25-25094f09fbcf}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY IsOn : BOOL]]></Declaration>
+      <Get Name="Get" Id="{64fc3015-fa56-47bd-a048-8496cfec0747}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsOn := _Speed <> 0;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Name" Id="{4177a6ae-2fb0-4458-a816-f09274b12068}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Name : STRING]]></Declaration>
+      <Get Name="Get" Id="{b9e238b8-1989-441a-907c-43e20a23d556}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Name := 'Ventilation';]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="SetSpeed" Id="{783ccaf6-9e73-4bc7-bd32-16c93365334b}">
+      <Declaration><![CDATA[METHOD SetSpeed
+VAR_INPUT
+	speed : BYTE;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Speed := speed;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="WriteOutputs" Id="{195de019-3db1-4311-8214-fb1ef64b03ce}">
+      <Declaration><![CDATA[METHOD WriteOutputs]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// put values to terminal here]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

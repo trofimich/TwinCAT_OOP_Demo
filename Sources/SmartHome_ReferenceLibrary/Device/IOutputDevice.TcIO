@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="IOutputDevice" Id="{bd3d1431-b63c-4fdb-a842-f230bafee062}">
+    <Declaration><![CDATA[INTERFACE IOutputDevice EXTENDS IDevice]]></Declaration>
+    <Method Name="WriteOutputs" Id="{addcb55a-f6f3-41b2-93ad-709e2fdc7b7d}">
+      <Declaration><![CDATA[METHOD WriteOutputs]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

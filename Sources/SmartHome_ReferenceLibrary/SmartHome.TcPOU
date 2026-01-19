@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="SmartHome" Id="{857a971e-5d7c-4106-8e02-185b2c21ea0c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ABSTRACT SmartHome
+VAR_GENERIC CONSTANT
+    _DeviceCount : UDINT := 1;
+END_VAR
+VAR_OUTPUT
+	Devices : ARRAY [0.._DeviceCount - 1] OF IDevice;
+END_VAR
+VAR
+	_SavedDeviceStates : ARRAY [0.._DeviceCount - 1] OF DEVICE_STATE;
+	
+	_LogMessageCounter : UDINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Folder Name="Members to override" Id="{76ab9287-c394-47e6-a14d-89ef40e1a3ee}" />
+    <Folder Name="Private members" Id="{f591475b-63c4-45e9-b3b9-ccf9d984630b}" />
+    <Method Name="Execute" Id="{9c1a966d-9ec6-43cd-a154-c4059e37e7a5}">
+      <Declaration><![CDATA[METHOD Execute]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[updateInputDevices();
+
+logDevicesState();
+
+OnTick();
+
+updateOutputDevices();
+
+saveDevicesState();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_Init" Id="{3e5e8d01-45db-4578-be3e-4146897eccb5}">
+      <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
+//The return value is not evaluated. For a specific influence, you can also declare the
+//methods explicitly and provide additional code there with the standard initialization
+//code. You can evaluate the return value.
+METHOD FB_Init: BOOL
+VAR_INPUT
+    bInitRetains: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
+    bInCopyCode: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)   
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Devices := GetDeviceArray();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetDeviceArray" Id="{46d5259b-25e6-40bc-bda7-1ffa1812e176}" FolderPath="Members to override\">
+      <Declaration><![CDATA[METHOD PROTECTED ABSTRACT GetDeviceArray : ARRAY [0.._DeviceCount - 1] OF IDevice
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="logDevicesState" Id="{b46d7961-31c0-4d73-8d43-3b3a197424ca}" FolderPath="Private members\">
+      <Declaration><![CDATA[METHOD PRIVATE logDevicesState
+VAR
+	i : UDINT;
+	message : STRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FOR i := 0 TO _DeviceCount - 1 DO
+	IF Devices[i].State = DEVICE_STATE.FAULT AND_THEN _SavedDeviceStates[i] <> DEVICE_STATE.FAULT THEN
+		_LogMessageCounter := _LogMessageCounter + 1;
+		
+		message := Tc2_Standard.CONCAT(
+			Tc2_Standard.CONCAT(
+				Tc2_Standard.CONCAT('#', TO_STRING(_LogMessageCounter)),
+				Tc2_Standard.CONCAT(': ', 'Device "')
+			),
+			Tc2_Standard.CONCAT(
+				Tc2_Standard.CONCAT(Devices[i].Name, '" at "'),
+				Tc2_Standard.CONCAT(Devices[i].Place, '" is in fault state')
+			)
+		);
+			
+		Tc2_System.ADSLOGSTR(msgCtrlMask := Tc2_System.Global_Variables.ADSLOG_MSGTYPE_ERROR, message, '');
+	ELSIF Devices[i].State = DEVICE_STATE.WORKING AND_THEN _SavedDeviceStates[i] <> DEVICE_STATE.WORKING THEN
+		_LogMessageCounter := _LogMessageCounter + 1;
+
+		message := Tc2_Standard.CONCAT(
+			Tc2_Standard.CONCAT(
+				Tc2_Standard.CONCAT('#', TO_STRING(_LogMessageCounter)),
+				Tc2_Standard.CONCAT(': ', 'Device "')
+			),
+			Tc2_Standard.CONCAT(
+				Tc2_Standard.CONCAT(Devices[i].Name, '" at "'),
+				Tc2_Standard.CONCAT(Devices[i].Place, '" is in working state')
+			)
+		);
+			
+		Tc2_System.ADSLOGSTR(msgCtrlMask := Tc2_System.Global_Variables.ADSLOG_MSGTYPE_HINT, message, '');		
+	END_IF
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OnTick" Id="{c3d4dc74-548b-46fb-9af8-1188cc74d0a6}" FolderPath="Members to override\">
+      <Declaration><![CDATA[METHOD PROTECTED ABSTRACT OnTick]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="saveDevicesState" Id="{c2735e41-08c5-48a6-bc0c-ffc69f2f81c2}" FolderPath="Private members\">
+      <Declaration><![CDATA[METHOD PRIVATE saveDevicesState
+VAR
+	i : UDINT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FOR i := 0 TO _DeviceCount - 1 DO
+	_SavedDeviceStates[i] := Devices[i].State;
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="updateInputDevices" Id="{f46dab79-235e-415c-a629-ad81b71c0555}" FolderPath="Private members\">
+      <Declaration><![CDATA[METHOD PRIVATE updateInputDevices
+VAR
+	i : UDINT;
+	device : IDevice;
+	inputDevice : IInputDevice;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FOR i := 0 TO _DeviceCount - 1 DO
+	device := Devices[i];
+	
+	IF __QUERYINTERFACE(device, inputDevice) THEN
+		inputDevice.ReadInputs();		
+	END_IF
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="updateOutputDevices" Id="{07929116-9320-4b69-87e5-3c210c3fa6f1}" FolderPath="Private members\">
+      <Declaration><![CDATA[METHOD PRIVATE updateOutputDevices
+VAR
+	i : UDINT;
+	device : IDevice;
+	outputDevice : IOutputDevice;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FOR i := 0 TO _DeviceCount - 1 DO
+	device := Devices[i];
+	
+	IF __QUERYINTERFACE(device, outputDevice) THEN
+		outputDevice.WriteOutputs();		
+	END_IF
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

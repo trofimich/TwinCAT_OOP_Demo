@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="Device" Id="{cb5b51ab-2c04-42a4-bc5a-867b10f395c1}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ABSTRACT Device IMPLEMENTS SHLib.IDevice
+VAR_INPUT
+	ErrorSimulation : BOOL;
+END_VAR
+VAR
+	_Place : STRING;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="FB_Init" Id="{0a267eba-2ae9-469b-ace5-17282d8a6711}">
+      <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
+//The return value is not evaluated. For a specific influence, you can also declare the
+//methods explicitly and provide additional code there with the standard initialization
+//code. You can evaluate the return value.
+METHOD FB_Init: BOOL
+VAR_INPUT
+    bInitRetains: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
+    bInCopyCode: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)   
+	place : STRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Place := place;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Name" Id="{48310b24-d9d1-454e-bf7e-39d7ea25a151}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY ABSTRACT Name : STRING]]></Declaration>
+      <Get Name="Get" Id="{5a41b795-ef12-46c3-9510-760e1fbe4b8d}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="Place" Id="{341f7924-99c6-4b97-a3c1-51a5b7ee37c6}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY FINAL Place : STRING]]></Declaration>
+      <Get Name="Get" Id="{3179009c-e946-4c69-953a-39418eccf0bc}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Place := _Place;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="State" Id="{96b73777-eb3e-4c8e-82a2-ccabf7753101}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY FINAL State : SHLib.DEVICE_STATE]]></Declaration>
+      <Get Name="Get" Id="{b2116243-1d97-47d7-950b-b180728e637e}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF ErrorSimulation THEN
+	State := SHLib.DEVICE_STATE.FAULT;
+ELSE
+	State := SHLib.DEVICE_STATE.WORKING;
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>
