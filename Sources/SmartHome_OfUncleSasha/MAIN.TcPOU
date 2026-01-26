@@ -4,10 +4,15 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	SmartHome : SmartHomeOfUncleSasha;
-END_VAR
-]]></Declaration>
+	
+	Home : REFERENCE TO SHLib.SmartHome<5>; 
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[SmartHome.Execute();]]></ST>
+      <ST><![CDATA[IF NOT __ISVALIDREF(Home) THEN	
+	Home REF= SmartHome; 
+END_IF
+
+Home.Execute();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -19,7 +19,7 @@ END_VAR]]></Declaration>
     <Folder Name="Members to override" Id="{76ab9287-c394-47e6-a14d-89ef40e1a3ee}" />
     <Folder Name="Private members" Id="{f591475b-63c4-45e9-b3b9-ccf9d984630b}" />
     <Method Name="Execute" Id="{9c1a966d-9ec6-43cd-a154-c4059e37e7a5}">
-      <Declaration><![CDATA[METHOD Execute]]></Declaration>
+      <Declaration><![CDATA[METHOD PUBLIC Execute]]></Declaration>
       <Implementation>
         <ST><![CDATA[updateInputDevices();
 

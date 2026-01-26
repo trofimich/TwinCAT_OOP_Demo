@@ -25,9 +25,20 @@
 				</Instance>
 			</Project>
 			<Project GUID="{558F3FBA-E45B-4A34-BF9F-8C78F82C2901}" Name="SmartHome_OfUncleSasha" PrjFilePath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.plcproj" TmcFilePath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{95C66220-3958-2C6C-7DB4-54B2262BF2E5}" TmcPath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.tmc">
+				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{D5DFB348-3352-E794-A321-3F4201B792BA}" TmcPath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.tmc">
 					<Name>SmartHome_OfUncleSasha Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="2" AreaNo="1">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>MAIN.SmartHome.CarbonDioxideSensor_Room_1._MappedValue</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SmartHome.CarbonDioxideSensor_Kitchen._MappedValue</Name>
+							<Type>WORD</Type>
+						</Var>
+					</Vars>
 					<Contexts>
 						<Context>
 							<Id>0</Id>

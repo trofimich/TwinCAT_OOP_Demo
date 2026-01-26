@@ -37,6 +37,16 @@ END_VAR]]></Declaration>
         <ST><![CDATA[_Speed := speed;]]></ST>
       </Implementation>
     </Method>
+    <Property Name="Speed" Id="{611a69b3-a767-49a8-aa02-6ce0ae25f464}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY Speed : BYTE]]></Declaration>
+      <Get Name="Get" Id="{0d0dfc88-2384-4a83-b468-fffe19243b1e}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Speed := _Speed;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
     <Method Name="WriteOutputs" Id="{195de019-3db1-4311-8214-fb1ef64b03ce}">
       <Declaration><![CDATA[METHOD WriteOutputs]]></Declaration>
       <Implementation>
