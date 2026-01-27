@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.19">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.20">
 	<Project ProjectGUID="{269ABC7E-E967-4A78-BCB5-F1294838C8F3}" Target64Bit="true" ShowHideConfigurations="#x3c7">
 		<System>
 			<Tasks>
@@ -13,19 +13,19 @@
 		</System>
 		<Plc>
 			<Project GUID="{37AC6192-DAEF-48DD-8653-493209127BFA}" Name="SmartHome_ReferenceLibrary" PrjFilePath="SmartHome_ReferenceLibrary\SmartHome_ReferenceLibrary.plcproj" TmcFilePath="SmartHome_ReferenceLibrary\SmartHome_ReferenceLibrary.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{1FD70D8D-D0DD-1538-339D-3F2EBCB801E7}" TmcPath="SmartHome_ReferenceLibrary\SmartHome_ReferenceLibrary.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{B0C5CCF9-BD9D-E228-961F-C2A895D5BC43}" TmcPath="SmartHome_ReferenceLibrary\SmartHome_ReferenceLibrary.tmc">
 					<Name>SmartHome_ReferenceLibrary Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 				</Instance>
 			</Project>
 			<Project GUID="{4A7A0E28-8763-4638-AFCB-015184303941}" Name="SmartHomeDevices_ReferenceLibrary" PrjFilePath="SmartHomeDevices_ReferenceLibrary\SmartHomeDevices_ReferenceLibrary.plcproj" TmcFilePath="SmartHomeDevices_ReferenceLibrary\SmartHomeDevices_ReferenceLibrary.tmc" ReloadTmc="true" AmsPort="853" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502080" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{47F22C14-415A-67BB-7312-C3ED9F41CC8E}" TmcPath="SmartHomeDevices_ReferenceLibrary\SmartHomeDevices_ReferenceLibrary.tmc">
+				<Instance Id="#x08502080" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E6387291-1322-E83E-7313-FEB3414FCAEE}" TmcPath="SmartHomeDevices_ReferenceLibrary\SmartHomeDevices_ReferenceLibrary.tmc">
 					<Name>SmartHomeDevices_ReferenceLibrary Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 				</Instance>
 			</Project>
 			<Project GUID="{558F3FBA-E45B-4A34-BF9F-8C78F82C2901}" Name="SmartHome_OfUncleSasha" PrjFilePath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.plcproj" TmcFilePath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{D5DFB348-3352-E794-A321-3F4201B792BA}" TmcPath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.tmc">
+				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{FFC6B2D9-B5D0-6B57-C92B-8582C51532DD}" TmcPath="SmartHome_OfUncleSasha\SmartHome_OfUncleSasha.tmc">
 					<Name>SmartHome_OfUncleSasha Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">

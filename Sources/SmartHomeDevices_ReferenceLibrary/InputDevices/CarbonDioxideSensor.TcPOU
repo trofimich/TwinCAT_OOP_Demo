@@ -35,8 +35,7 @@ PROPERTY Name : STRING]]></Declaration>
       <Declaration><![CDATA[METHOD ReadInputs
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[// handle value from terminal here
-_CarbonDioxideLevel := _MappedValue * 100 / 5;]]></ST>
+        <ST><![CDATA[// handle value from terminal here]]></ST>
       </Implementation>
     </Method>
   </POU>
